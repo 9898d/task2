@@ -9,6 +9,7 @@ var count = 0
 var isChar = true
 var name: String? = null
 var countOfFiles = 0
+var aaa = ""
 
 
 fun main(args: Array<String>) {
@@ -49,8 +50,9 @@ fun readFromFile(files: List<String>) {
     countOfFiles = files.size
     for (file in files) {
         val text = File(file).readLines()
-        printResult(selectRange(text, file))
+        aaa += selectRange(text, file)
     }
+    printResult(aaa)
 }
 
 
@@ -60,25 +62,15 @@ fun choseStringOrChar(c: Int?, n: Int?): Pair<Int, Boolean> {
     return Pair(count, char)
 }
 
-var result = ""
 
 fun selectRange(text: List<String>, name: String): String {
-    if (isChar) {
-        val string = text.joinToString("")
-        result += name
-        result += "\n"
-        result += string.substring(string.length - count, string.length)
-        result += "\n"
+    var result = ""
+    result = if (isChar) {
+        outputChars(text, name)
     } else {
-        if (text.size < count) return text.joinToString("\n")
-        result += name
-        result += "\n"
-        result += text.subList(text.size - count, text.size).joinToString("\n")
-        result += "\n"
+        outputStrings(text, name)
     }
-    return if (countOfFiles == 1) {
-        result.substringAfter("\n")
-    } else result
+    return result
 }
 
 fun printResult(result: String) {
@@ -90,4 +82,27 @@ fun printResult(result: String) {
         res.write(result)
         res.close()
     }
+}
+
+fun outputChars(text: List<String>, name: String):String {
+    var res = ""
+    val string = text.joinToString("")
+    res += name
+    res += "\n"
+    res += if (string.length > count) string.substring(string.length - count, string.length)
+    else string
+    res += "\n"
+    return if (countOfFiles == 1) res.substringAfter("\n")
+    else res
+}
+
+fun outputStrings(text: List<String>, name: String): String {
+    var res = ""
+    res += name
+    res += "\n"
+    res += if (text.size > count) text.subList(text.size - count, text.size).joinToString("\n")
+    else text.joinToString("\n")
+    res += "\n"
+    return if (countOfFiles == 1) res.substringAfter("\n")
+    else res
 }

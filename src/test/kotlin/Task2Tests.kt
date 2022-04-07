@@ -37,13 +37,39 @@ src/test/resources/test11.txt
     }
 
     @Test
-    fun twoFileAndStrings() {
-        main(arrayOf("src/test/resources/test5.txt", "src/test/resources/test11.txt", "-n", "3", "-o", "src/test/resources/ooo.txt"))
+    fun threeFilesAndStrings() {
+        main(arrayOf("src/test/resources/test5.txt", "src/test/resources/test11.txt", "src/test/resources/test11_4.txt", "-n", "3", "-o", "src/test/resources/ooo.txt"))
         assertFileContent("src/test/resources/ooo.txt", """src/test/resources/test5.txt
 Третья строчка
 Четвертая
 Пятая
 src/test/resources/test11.txt
+Девятая
+Десятая
+Одиннадцатая строчка
+src/test/resources/test11_4.txt
+Одиннадцатая строчка
+
+""")
+    }
+
+    @Test
+    fun twoFileWithoutOption() {
+        main(arrayOf("src/test/resources/test5.txt", "src/test/resources/test11.txt", "-o", "src/test/resources/ooo.txt"))
+        assertFileContent("src/test/resources/ooo.txt", """src/test/resources/test5.txt
+Первая строчка
+Вторая строчка
+Третья строчка
+Четвертая
+Пятая
+src/test/resources/test11.txt
+Вторая строчка
+Третья строчка
+Четвертая
+Пятая
+Шестая
+Седьмая
+Восьмая
 Девятая
 Десятая
 Одиннадцатая строчка""")

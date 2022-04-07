@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Task2Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-07T17:34:54" hostname="LAPTOP-S70PS6SC" time="0.118">
+<testsuite name="Task2Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-07T20:48:41" hostname="LAPTOP-S70PS6SC" time="0.177">
   <properties/>
-  <testcase name="twoFileAndStrings()" classname="Task2Tests" time="0.118"/>
+  <testcase name="ExeptionCAndN()" classname="Task2Tests" time="0.177"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
